@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minha Galeria Black</title>
+<style>
+body {
+  background: #08060d;
+  color: white;
+  font-family: Arial;
+  margin: 0;
+  padding: 20px;
+}
+h1 {
+  color: #b44cff;
+  text-align: center;
+}
+button {
+  background: #a020f0;
+  color: white;
+  border: 0;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+input { margin: 20px 0; }
+#galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+</style>
+</head>
+<body>
+<h1>MINHA GALERIA BLACK</h1>
+<p>Sua galeria. Seu estilo.</p>
+<button onclick="document.getElementById('fotos').click()">
+Adicionar fotos
+</button>
+<input type="file" id="fotos" accept="image/*" multiple hidden>
+<div id="galeria"></div>
+<script>
+document.getElementById('fotos').onchange = function() {
+  for (const arquivo of this.files) {
+    const imagem = document.createElement('img');
+    imagem.src = URL.createObjectURL(arquivo);
+    document.getElementById('galeria').appendChild(imagem);
+  }
+};
+</script>
+</body>
+</html>
